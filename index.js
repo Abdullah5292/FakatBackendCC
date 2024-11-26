@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 (async () => {
     try {
-        await mongoose.connect("mongodb+srv://fakat:12345@fakat.4rsjfro.mongodb.net/")
+        await mongoose.connect("mongodb+srv://Abdullah:Fakat%4012345@fakatlockers.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000")
         console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
