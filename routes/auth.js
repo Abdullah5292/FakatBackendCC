@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 const transporter = require('../emailService.js');
 const crypto = require('crypto');
 var router = express.Router();
-const jwt = require("jsonwebtoken")
+// const jwt = require("jsonwebtoken")
 const MY_SECRET = "MY_SECRET";
 
 router.post("/signUp", async (req, res) => {
@@ -74,15 +74,15 @@ router.post("/login", async (req, res) => {
         if (!user) return res.json({ msg: "Incorrect Username" })
         const passwordCheck = await bcrypt.compare(password, user.password);
         if (!passwordCheck) return res.json({ msg: "Incorrect Password" })
-        const token = jwt.sign({
-            username,
-            userId: user.userId,
-            createdAt: new Date(),
-            role: user.role,
-        }, "MY_SECRET", { expiresIn: "1d" });
-        res.json({
-            msg: "LOGGED IN", token
-        })
+        // const token = jwt.sign({
+        //     username,
+        //     userId: user.userId,
+        //     createdAt: new Date(),
+        //     role: user.role,
+        // }, "MY_SECRET", { expiresIn: "1d" });
+        // res.json({
+        //     msg: "LOGGED IN", token
+        // })
     } catch (error) {
         console.error(error)
     }

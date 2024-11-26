@@ -4,7 +4,7 @@ const Lockers = require("../models/Lockers");
 
 var express = require("express");
 var router = express.Router();
-const jwt = require("jsonwebtoken")
+// const jwt = require("jsonwebtoken")
 
 
 router.put("/UpdateInfo", async (req, res) => {
