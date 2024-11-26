@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 
 var express = require("express");
 var router = express.Router();
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const { json } = require("body-parser");
 //Following will give booking details of the user, who has made the booking[another user can't see the booking details of another user]
 router.get("/getbookingWithUser", async (req, res) => {

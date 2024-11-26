@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken")
 
 const authRouter = require("./auth");
 const bookingRouter = require("./booking");
@@ -13,20 +13,20 @@ const reviewRouter = require("./review");
 router.use("/auth", authRouter);
 
 
-// router.use(async (req, res, next) => {
-//     try {
-//         const token = req.headers.authorization;
-//         console.log(token)
-//         const user = jwt.verify(token?.split(" ")[1], "MY_SECRET")
-//         console.log(user);
-//         req.user = user;
-//         next()
-//     } catch (e) {
-//         console.log(e)
-//         return res.json({ msg: "INVALID" })
+router.use(async (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+        console.log(token)
+        const user = jwt.verify(token?.split(" ")[1], "MY_SECRET")
+        console.log(user);
+        req.user = user;
+        next()
+    } catch (e) {
+        console.log(e)
+        return res.json({ msg: "INVALID" })
 
-//     }
-// })
+    }
+})
 
 router.use("/booking", bookingRouter);
 router.use("/locker", lockerRouter);
