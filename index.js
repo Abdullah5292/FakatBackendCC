@@ -9,15 +9,25 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-(async () => {
-    try {
-        await mongoose.connect("mongodb+srv://Abdullah:Fakat%4012345@fakatlockers.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000")
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
+// MongoDB URI (directly hardcoded)
+const MONGO_URI = 'mongodb+srv://Abdullah:Fakat%4012345@fakatclouddb.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000';
 
-})()
+
+const connectDB = async () => {
+    try {
+        // Connect to Cosmos DB using the URI from .env
+        await mongoose.connect(MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds
+        });
+        console.log('Connected to Cosmos DB successfully');
+    } catch (err) {
+        console.error('Error connecting to Cosmos DB:', err.message);
+        process.exit(1); // Exit the process if the connection fails
+    }
+};
+connectDB();
 
 const router = require('./routes/index');
 app.use('/', router);
