@@ -48,12 +48,12 @@ router.get("/getLockerWithUser", async (req, res) => {
 
 
 /******* below are all the routes that WILL NOT pass through the middleware ********/
-router.use((req, res, next) => {
-    if (req.user && req.user.role === "admin") {
-        next();
-    } else return res.json({ msg: "Unauthorized. Only admin users can perform this action" })
+// router.use((req, res, next) => {
+//     if (req.user && req.user.role === "admin") {
+//         next();
+//     } else return res.json({ msg: "Unauthorized. Only admin users can perform this action" })
 
-})
+// })
 
 /******* below are all the routes that WILL pass through the
  * middleware ********/

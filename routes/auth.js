@@ -6,7 +6,7 @@ const transporter = require('../emailService.js');
 const crypto = require('crypto');
 var router = express.Router();
 // const jwt = require("jsonwebtoken")
-const MY_SECRET = "MY_SECRET";
+// const MY_SECRET = "MY_SECRET";
 
 router.post("/signUp", async (req, res) => {
     try {
@@ -80,9 +80,9 @@ router.post("/login", async (req, res) => {
         //     createdAt: new Date(),
         //     role: user.role,
         // }, "MY_SECRET", { expiresIn: "1d" });
-        // res.json({
-        //     msg: "LOGGED IN", token
-        // })
+        res.json({
+            msg: "LOGGED IN",
+        })
     } catch (error) {
         console.error(error)
     }
